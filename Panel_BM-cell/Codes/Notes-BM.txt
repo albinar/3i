@@ -1,0 +1,299 @@
+Notes on BM cells:
+
+There were 1411 FCS files from August batch. 54 FCS files didn't have any barcodes in their names. So they were discarded leaving us 1357 files. 
+
+There were 927 FCS files from March batch. 
+
+
+In total there were 2284 FCS files from both August & March groups.
+
+There were 181 files whose Barcodes were not listed in the csv files, so they were removed. Therefore, we are now left with 2103 FCS files in total.
+
+There were NO Corrupted FCS files.
+There were 373 unique Genotypes (2 WTs + 371 KOs) of which 3 of the KOs have no FCS files. Therefore, we have 370 unique Genotypes (2 WTs + 368 KOs).
+
+1700112E06Rik_1700112E06Rik/BM_L000064218_E10_010.labelled.fcs and
+1700112E06Rik_1700112E06Rik/BONE MARROW_L000064218_E10_010.labelled.fcs are duplicates??
+
+1700112E06Rik_1700112E06Rik/BM_L000064217_D10_008.labelled.fcs and
+1700112E06Rik_1700112E06Rik/BONE MARROW_L000064217_D10_008.labelled.fcs are duplicates??
+
+Problematic Files:
+WT: Look into the gating plots. If we follow what Adam wants for the gating then it cuts off 30-65% of the cells.
+L000095424
+L000095425
+L000095426
+L000095427
+L000095429
+L000045548
+L000078570
+L000078572
+L000078573
+L000078578
+L000078579
+L000078583
+L000105267
+
+WT: too few cells
+L000070142
+L000070143
+L000070144
+L000070147
+
+WT: Look into the gating of CD45+. look if the threshold for CD45 shifts after fixing the outliers.
+L000101583 ## Still doesnt look good
+
+WY: Gating problem at the Live plot. Check after fixing the gating threshold outliers
+L000058604
+L000058608
+L000058611
+L000058614
+L000058616
+L000101582 ## Still doesnt look good
+
+WT: cutting off too many cells. Check after fixing the gating threshold outliers
+L000070762 ## Still doesnt look good
+L000068125 ## Still doesnt look good
+
+There were 18 FCS files with duplicated barcodes. All these files belonged to KOs. Therefore, we are now left with 2085 unique FCS files (436 WTs + 1649 KOs)
+
+****************************************************************************
+
+Analysing the new batch of dataset from October 11, 2016. 
+
+There are 675 FCS files. All files have Barcodes.
+
+There are 556 Genotypes (2 WTs + 554 KOs).
+
+There were 95 FCS files whose barcodes were not enlisted in the spreadsheet of October 2016. So we discarded them. We are now left with 580 FCS files. 
+
+We have 1 corrupted FCS file: BM_L000131656_A10_001.labelled.fcs (WT), which was removed. We are now left with 579 FCS files.
+
+Possible outliers (determined based on the flowClean and looking into the plots):
+BM_L000134784_C12_006
+BM_L000134774_A12_002
+BM_L000134775_H11_014
+BM_L000134776_D12_008
+BM_L000134777_D11_007
+BM_L000134778_G11_013
+BM_L000134779_A11_001
+BM_L000134780_B11_003
+BM_L000134781_C11_005
+BM_L000134782_B12_004
+BM_L000134783_F12_012
+BM_L000134784_C12_006
+BM_L000134785_E11_009
+BM_L000134786_F11_011
+BM_L000134787_E12_010
+BM_L000136529_A12_001
+BM_L000136530_B12_002
+BM_L000136531_H12_008
+BM_L000136532_C12_003
+BM_L000136533_F12_006
+BM_L000136534_D12_004
+BM_L000136535_E12_005
+BM_L000136536_G12_007
+
+The following is flagged based on flowClean and scatter plot; however, it may not be an outlier:
+BM_L000137161_H11_010
+
+There were no duplicate files (based on the Barcodes).
+We have not done any UFO analysis yet for outlier check. 
+
+##################################################################################
+
+Re-Analysis on all the FCS files together (August 2015, March 2016, and October 2016).
+
+********************
+PRE-PROCESSING & CLEANING COMMENTS:
+
+A preProcessing script was written which was used for the pre-Processing of the files. The summary of the output is as follows:
+
+[1] "There are in total 2674 files for analysis."
+[1] "Number of FCS files with NO Barcodes: 54"
+[1] "Number of FCS files which were sent to us but whose information was missing in the metadata spreadsheet: 277"
+[1] "Number of Barcodes which were there in the metadata spreadsheet but for which we received no FCS files: 4788"
+[1] "Number of Corrupted files: 1"
+[1] "Number of files with < 20,000 cells: 58"
+[1] "Number of Duplicate FCS files: 47"
+[1] "All files have the same number of channels: 19"
+
+TvsF was used for cleaning the files. TvsF flagged 6 FCS files:
+L000069436
+L000078582
+L000082117
+L000083512
+L000137161
+L000133681
+
+The first 5 seemed to be problematic; however, I am not so sure of the 6th file, L000133681 and I think we should include in our further analysis.
+
+Got feedback from Adam (January 04, 2017) and he asked to remove all the 6 flagged files. I agree with 5 of them since according to TvsF they seemed to have serious time issue. However, in my opinion the 6th file should be included.
+Specimen_001_L000133681_A12_003.labelled.fcs
+
+So removing 5 flagged files. We will now analyze 2669 files.
+
+****************************
+AFTER GATING COMMENTS:
+
+NO files failed the first run of the Gating.
+
+Flagged 21 files among the remaining 2669 files based on their Gating Plots (first run):
+"BM_L000134777_D11_007.labelled.fcs"
+"BM_L000134779_A11_001.labelled.fcs"
+"BM_L000134780_B11_003.labelled.fcs"
+"BM_L000134781_C11_005.labelled.fcs"
+"BM_L000134785_E11_009.labelled.fcs"
+"BM_L000058604_E11_009.labelled.fcs"
+"BM_L000058605_A11_001.labelled.fcs"
+"BM_L000058606_C12_006.labelled.fcs"
+"BM_L000058607_D11_007.labelled.fcs"
+"BM_L000058608_C11_005.labelled.fcs"
+"BM_L000058609_D12_008.labelled.fcs"
+"BM_L000058610_B11_003.labelled.fcs"
+"BM_L000058612_E12_010.labelled.fcs"
+"BM_L000058614_B12_004.labelled.fcs"
+"BM_L000134777_D11_007.labelled.fcs"
+"BM_L000134779_A11_001.labelled.fcs"
+"BM_L000134781_C11_005.labelled.fcs"
+"BM_L000134782_B12_004.labelled.fcs"
+"BM_L000134785_E11_009.labelled.fcs"
+"BM_L000057257_D11_010.labelled.fcs"
+"BM_L000057264_C11_008.labelled.fcs"
+
+NO files failed the second run of the Gating.
+
+Checked the Gating plot of the file, Specimen_001_L000133681_A12_003.labelled.fcs, the 6th file flagged by TvsF and which Adam asked me to disregard  - the plot looked good.
+
+
+The spreadsheets contain Event counts & Proportions for 2669 files.
+
+****************************
+WORKING ON FEEDBACK RECEIVED FROM ANIA (January 11, 2017):
+
+In her feedback there were 5 problematics files, which I have already flagged during my first phase of the analysis:
+BM_L000058604_E11_009.labelled.fcs
+BM_L000058606_C12_006.labelled.fcs
+BM_L000058607_D11_007.labelled.fcs
+BM_L000058608_C11_005.labelled.fcs
+BM_L000058609_D12_008.labelled.fcs
+
+In additon, I am flagging some more files:
+BM_L000100147_H10_016.labelled.fcs
+BM_L000108318_F11_009.labelled.fcs
+BM_L000134775_H11_014.labelled.fcs
+BM_L000134776_D12_008.labelled.fcs
+BM_L000134777_D11_007.labelled.fcs
+BM_L000134778_G11_013.labelled.fcs
+BM_L000134779_A11_001.labelled.fcs
+BM_L000134780_B11_003.labelled.fcs
+BM_L000134781_C11_005.labelled.fcs
+BM_L000134782_B12_004.labelled.fcs
+BM_L000134785_E11_009.labelled.fcs
+BM_L000134786_F11_011.labelled.fcs
+BM_L000134787_E12_010.labelled.fcs
+BM_L000138004_A12_001.labelled.fcs (singlets population looks odd) - 22-Aug-2016 - Female
+BM_L000115237_E12_010.labelled.fcs (singlets population looks odd) - 10-Feb-2016 - Female
+BM_L000057257_D11_010.labelled.fcs (live+lymphocyte population looks odd) - 17-Sep-2014 - Male
+BM_L000057264_C11_008.labelled.fcs (live+lymphocyte population looks odd) - 17-Sep-2014 - Male
+BM_L000066910_G11_013.labelled.fcs (live+lymphocyte population looks odd) - 08-Dec-2014 - Female
+BM_L000116880_F10_012.labelled.fcs (cd45 population looks odd)- 24-Feb-2016 - Female
+BM_L000116883_F11_013.labelled.fcs (cd45 population looks odd)- 24-Feb-2016 - Female
+BM_L000078568_G10_014.labelled.fcs (cd45 population looks odd)- 23-Mar-2015 - Female
+BM_L000078570_C10_006.labelled.fcs (cd45 population looks odd)- 23-Mar-2015 - Female
+BM_L000078572_A10_001.labelled.fcs (cd45 population looks odd)- 23-Mar-2015 - Female
+BM_L000078573_B10_004.labelled.fcs (cd45 population looks odd)- 23-Mar-2015 - Female
+BM_L000078578_E10_010.labelled.fcs (cd45 population looks odd)- 23-Mar-2015 - Male
+BM_L000078579_F10_012.labelled.fcs (cd45 population looks odd)- 23-Mar-2015 - Male
+BM_L000078583_D10_008.labelled.fcs (cd45 population looks odd)- 23-Mar-2015 - Male - (One of the listed files by Ania)
+BM_L000065106_G11_013.labelled.fcs (Granulocyte Pre and NOT(Granulocyte Pre) looks odd)(One of the listed files by Ania) - 24-Nov-2014 - Female
+BM_L000065107_H11_015.labelled.fcs (Granulocyte Pre and NOT(Granulocyte Pre) looks odd)(One of the listed files by Ania) - 24-Nov-2014 - Female
+BM_L000065108_A12_002.labelled.fcs (Granulocyte Pre and NOT(Granulocyte Pre) looks odd)(One of the listed files by Ania) - 24-Nov-2014 - Female
+BM_L000065109_B12_004.labelled.fcs (Granulocyte Pre and NOT(Granulocyte Pre) looks odd) - 24-Nov-2014 - Female
+BM_L000065110_C12_006.labelled.fcs (Granulocyte Pre and NOT(Granulocyte Pre) looks odd) - 24-Nov-2014 - Male
+BM_L000065111_D12_008.labelled.fcs (Granulocyte Pre and NOT(Granulocyte Pre) looks odd) - 24-Nov-2014 - Male
+BM_L000065112_E12_010.labelled.fcs (Granulocyte Pre and NOT(Granulocyte Pre) looks odd) - 24-Nov-2014 - Male
+BM_L000065114_G12_014.labelled.fcs (Granulocyte Pre and NOT(Granulocyte Pre) looks odd) - 24-Nov-2014 - Female
+
+This time also there were no files which failed the gating.
+
+#################################################################################################################################
+#################################################################################################################################
+
+Re-Analysis the complete 3i Bone Marrow dataset together (August 2015, March 2016, October 2016, July 2017, and some missing files).
+
+********************
+PRE-PROCESSING & CLEANING COMMENTS:
+
+A preProcessing script was written which was used for the pre-Processing of the files. The summary of the output is as follows:
+
+[1] "There are in total 2773 files for analysis."
+[1] "Number of FCS files with NO Barcodes: 54"
+[1] "Number of FCS files which were sent to us but whose information was missing in the metadata spreadsheet: 287"
+[1] "Number of Barcodes which were there in the metadata spreadsheet but for which we received no FCS files: 4831"
+[1] "Number of Corrupted files: 1"
+[1] "Number of files with < 20,000 cells: 57"
+[1] "Number of Duplicate FCS files: 129"
+[1] "All files have the same number of channels: 19"
+
+
+TvsF was used for cleaning the files. TvsF flagged 7 FCS files including 1 WT file:
+L000069436
+L000078582
+L000082117
+L000083512
+L000137161
+L000133681
+L000061145 (WT)
+
+Among these 7 files, 6 were flagged before during the first phase of anaylsis. The WT (L000061145) is the new flagged one this time.
+
+6 out of these 7 seemed to be problematic; however, like before I am keeping the file Specimen_001_L000133681_A12_003.labelled.fcs.
+
+
+So removing 6 flagged files including the WT file. We will now analyze 2767 files.
+
+****************************
+AFTER GATING COMMENTS:
+
+NO files failed the first run of the Gating.
+
+In addition to the files I have flagged before, I am also flagging the following files:
+BM_L000073944_C12_006.labelled.fcs (HFE population)
+BM_L000073945_B12_004.labelled.fcs (HFE population)
+BM_L000073946_A12_002.labelled.fcs (HFE population)
+BM_L000073947_H11_011.labelled.fcs (HFE population)
+BM_L000073948_G11_010.labelled.fcs (HFE population)
+BM_L000073949_F11_009.labelled.fcs (HFE population)
+BM_L000073950_E11_008.labelled.fcs (HFE population)
+BM_L000073951_D11_007.labelled.fcs (HFE population)
+BM_L000073952_C11_005.labelled.fcs (HFE population)
+BM_L000073953_B11_003.labelled.fcs (HFE population)
+BM_L000073954_A11_001.labelled.fcs (HFE population)
+
+After the gating outliers were fixed, automated gating was run on the files for the second time.
+This time also, no files failed the gating.
+
+In the final Event counts and Proportions spreadsheets, we have results for 2767 files.
+
+
+*******************************************************
+WORKING ON ANIA'S FEEDBACK:
+
+Myeloid Precursor
+ Assay_Date     auto   manu         V4
+ 1: 2014-06-30 2.847660 21.711 L000046772, L000046787 -- Live gate
+ 
+3: 2015-07-06 1.526263 13.836 L000090229
+4: 2015-07-20 2.317073 13.457 L000091820
+
+"HFF__proc_of_B220plus"
+     Assay_Date      auto   manu         V4
+  1: 2014-06-30  3.968106 46.331 L000046772
+  2: 2014-06-30 11.242720 39.836 L000046776
+  3: 2014-06-30  4.409190 44.593 L000046777
+  4: 2014-06-30  9.942681 42.352 L000046778
+  5: 2014-06-30 10.226814 40.189 L000046785
+
+
+
