@@ -1,0 +1,20 @@
+export(RchyOptimyx)
+export(summary)
+export(plot)
+export(merge)
+importClassesFrom(methods, list, numeric, vector, matrix)
+importClassesFrom(graph, graphNEL)
+importMethodsFrom(graph, addEdge, adj, edgeData, nodeData,
+                  "nodeData<-", "nodeDataDefaults<-", nodes, subGraph,
+                  ugraph, "edgeNames")
+importFrom(sfsmisc, digitsBase, as.intBase)
+importFrom(graphics, abline, axis, par, title, close.screen, image, screen, split.screen)
+importMethodsFrom(Rgraphviz,plot)
+importFrom(methods, new) #For R 3.0 and greater
+#importFrom(methods, "@<-", new) #No longer works in R 3.0        
+importFrom(grDevices, col2rgb, colorRampPalette)
+importFrom(flowTypeFilter, decodePhenotype)
+useDynLib(RchyOptimyx)
+
+
+

@@ -1,0 +1,6 @@
+0.99.1: This is the submitted version of the package.
+0.99.4: Bug fixes.
+0.99.5: Bug fixes.
+1.1.2: plot.legend option added to the plot function.
+2.0: Major update. Now handles multiple partitions per dimension and partially gates samples. This is compatible with flowType2.0 but no longer compatibly with flowType1.0. Backwards compatibility with flowType1.0 is not possible.
+2.3.2: Minor change in the saved dataset’s format to avoid a bioconductor compression warning.
