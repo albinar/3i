@@ -1,0 +1,295 @@
+MLN Dataset:
+
+There were 1493 FCS files sent on August 2015. There were 17 FCS files, which had no barcodes in their names. These files were removed and so we were left with 1476 files. 
+There were 167 FCS files whose barcodes were not enlisted in the spreadsheet of August. So we discard them. We are now left with 1309 FCS files. 
+
+
+There were 938 FCS files sent on March 2016. There was 1 FCS file, which had no barcode in its name. This file was removed and so we were left with 937 files. 
+There were 182 FCS files whose barcodes were not enlisted in the spreadsheet of March. So we discard them. We are now left with 755 FCS files. 
+
+There was 1 corrupted FCS file. 
+
+In total we have 2063 FCS files from both August and March.
+
+There were 426 unique Genotypes (2 WTs+ 424 KOs) of which 371 (2 WTs and KOs) had FCS files. 
+
+One FCS file: MLN_L000108024_A04_013 (Genotype: H13(b)_+) has 2902 cells.
+
+Problematic Files:
+/Ankrd13_Ankrd13/MLN_L000096549_006.labelled.fcs. Removed it from the store.allFCS and allFCS. 
+Problem detected: had no autofluoresence. Also the population looked different from the first ungated plot.
+
+D6Wsu163e(b)_D6Wsu163e(b)/MLN_L000100085_D05_027.labelled.fcs
+84595 cells. Problem detected from the singlets population. Too few cells. So removing it.
+
+Dhps_+/MLN 14,2f,09,2f,2015_L000098617_009.labelled.fcs
+Same problem as /Ankrd13_Ankrd13/MLN_L000096549_006.labelled.fcs
+
+Duoxa2(b)_Duoxa2(b)/MLN_L000099502_015.labelled.fcs
+Same problem as /Ankrd13_Ankrd13/MLN_L000096549_006.labelled.fcs
+
+Duoxa2(b)_Duoxa2(b)/MLN_L000103886_A06_021.labelled.fcs
+Duoxa2(b)_Duoxa2(b)/MLN_L000103887_B06_024.labelled.fcs
+Duoxa2(b)_Duoxa2(b)/MLN_L000103888_H05_038.labelled.fcs
+Duoxa2(b)_Duoxa2(b)/MLN_L000107499_C04_022.labelled.fcs
+
+Gm16432(b)_Gm16432(b)/MLN_L000107490_G04_030.labelled.fcs
+
+H13(b)_+/MLN_L000108024_A04_013.labelled.fcs: has too few cells. 2902 cells
+Irak1(b)_Y/MLN_L000100082_A06_020.labelled.fcs: has too few cells. 15680
+Kif24(b)_Kif24(b)/MLN_L000079579_E05_030.labelled.fcs.  
+mmu-mir-211 KO_mmu-mir-211 KO/MLN 8,2f,24,2f,15_L000096536_015.labelled.fcs
+Nacc2(b)_Nacc2(b)/MLN_L000090935_023.labelled.fcs. has too few cells: 159358
+Prrg2(b)_Prrg2(b)/MLN_L000046914_A06_020.labelled.fcs
+Traf6_+/MLN_L000046906_A05_019.labelled.fcs
+Trappc10(b)_Trappc10(b)/MLN_L000097265_014.labelled
++_+/MLN_L000103892_B04_022.labelled.fcs
++_+/Gthres_MLN_L000113732_C04_027.labelled.fcs
+
+19 FCS files seems problematic.
+We have now 2044 FCS files.
+
+
+There are 13 duplicate FCS files. There duplicacy was found based on the barcodes. Among the 13 duplicate files, there were 6 of them which were of Wild Types.
+This part of the script is in the UFO_3i_pre.R script.
+The list of duplicate FCS files (and their Genotypes) are saved as duplicate.FCS.Rdata. These duplicate FCS files were removed and the list of unique FCS files were saved in a new matrix: store.all.FCS.unique.Rdata
+
+We now have 2031 unique FCS files (418 WTs + 1613 KOs)
+
+****************************************************************************
+
+Analysing the new batch of dataset from October 11, 2016. 
+
+There are 740 FCS files. All files have Barcodes.
+
+There are 592 Genotypes (2 WTs + 590 KOs).
+
+There were 122 FCS files whose barcodes were not enlisted in the spreadsheet of October 2016. So we discarded them. We are now left with 618 FCS files. 
+
+There were NO corrupted files.
+
+NOTE that we need to look into the list of files which gave error message with flowClean. For now, we are not removing these files but later we will look into this list. For the new batch of dataset, I am saving the list of such as "store.Clean.Error.Rdata". For the previous two batches we have not saved it, so maybe we should go back and run flowClean and then save it so that we can look into these files later.
+
+For this batch we have 3 such files which had error messages from running flowClean.
+
+There are no duplicate FCS files. 
+
+
+******************************************************************************************
+******************************************************************************************
+
+Re-Analysis done in December 2016 on all the FCS files together (August 2015, March 2016, and October 2016).
+
+**************************************************************************************
+PRE-PROCESSING & CLEANING COMMENTS:
+
+A preProcessing script was written which was used for the pre-Processing of the files. The summary of the output is as follows:
+[1] "There are in total 2663 files for analysis."
+[1] "Number of FCS files with NO Barcodes: 18"
+[1] "Number of FCS files which were sent to us but whose information was missing in the metadata spreadsheet: 471"
+[1] "Number of Barcodes which were there in the metadata spreadsheet but for which we received no FCS files: 1125"
+[1] "Number of Corrupted files: 1"
+[1] "Number of files with < 20,000 cells: 5"
+[1] "Number of Duplicate FCS files: 13"
+[1] "All files have the same number of channels: 19" 
+
+
+TvsF was used for cleaning the files. TvsF flagged 71 FCS files.
+Adam's feedback on the 71 flagged files were as follows:
+To keep 51 files and disregard the rest 20 files. Of the 51 files, there were 5 files which had serious/some time issues according to TvsF but Adam wanted me to keep them. So for now I am keeping them till I see their gating plots. However, I am noting down information on these 5 files:
+
+MLN_L000044334_D03_021.labelled.fcs
+MLN_L000048568_G03_025.labelled.fcs
+MLN_L000055005_E04_031.labelled.fcs
+MLN_L000097255_005.labelled.fcs
+MLN_L000097258_001.labelled.fcs
+
+
+Also, among the 20 files, which Adam asked me to disregard, there are 8 files which I believe should be kept and later on decide whether to keep/discard them. The files are as follows:
+
+MLN_L000089594_003.labelled.fcs
+MLN_L000089596_005.labelled.fcs
+MLN_L000089597_006.labelled.fcs
+MLN_L000089598_007.labelled.fcs
+MLN_L000089600_009.labelled.fcs
+MLN_L000089601_010.labelled.fcs
+MLN_L000089602_011.labelled.fcs
+MLN_L000089605_014.labelled.fcs
+
+So for the gating of the 71 flagged files, I am including 59 files and disregarding 12 files.
+
+We are gating 2651 FCS files.
+
+*****************************************************************************************
+AFTER GATING COMMENTS:
+
+There were 55 files which failed gating (these files were not failed by TvsF):
+MLN_L000046906_A05_019.labelled.fcs              MLN_L000077130_B03_019.labelled.fcs             
+MLN_L000079579_E05_030.labelled.fcs              
+MLN 14,2f,09,2f,2015_L000098617_009.labelled.fcs
+MLN 8,2f,24,2f,15_L000096536_015.labelled.fcs    MLN_L000090935_023.labelled.fcs                 
+MLN_L000096549_006.labelled.fcs                  MLN_L000097265_014.labelled.fcs                 
+MLN_L000099502_015.labelled.fcs                  MLN_L000103886_A06_021.labelled.fcs             
+MLN_L000103887_B06_024.labelled.fcs              MLN_L000103888_H05_038.labelled.fcs             
+MLN_L000103892_B04_022.labelled.fcs              MLN_L000105403_C04_021.labelled.fcs             
+MLN_L000107490_G04_030.labelled.fcs              MLN_L000107499_C04_022.labelled.fcs             
+MLN_L000113732_C04_027.labelled.fcs              MLN_L000116055_F03_026.labelled.fcs             
+MLN_L000116057_C04_021.labelled.fcs              MLN_L000116059_D04_023.labelled.fcs             
+MLN_L000116060_E04_025.labelled.fcs              MLN_L000116061_G04_029.labelled.fcs             
+MLN_L000116062_H03_030.labelled.fcs              MLN_L000116064_C03_020.labelled.fcs             
+MLN_L000116066_B04_019.labelled.fcs              MLN_L000116068_E03_024.labelled.fcs             
+MLN_L000116069_H04_031.labelled.fcs              MLN_L000117227_B05_022.labelled.fcs             
+MLN_L000117228_A05_019.labelled.fcs              MLN_L000120554_C04_022.labelled.fcs             
+MLN_L000122258_C04_020.labelled.fcs              MLN_L000125319_H03_022.labelled.fcs             
+MLN_L000125388_D04_021.labelled.fcs              MLN_L000126777_B03_016.labelled.fcs             
+MLN_L000126786_C04_019.labelled.fcs              MLN_L000126795_A04_015.labelled.fcs             
+MLN_L000127461_E03_024.labelled.fcs              MLN_L000128058_G04_032.labelled.fcs             
+MLN_L000128066_H05_035.labelled.fcs              MLN_L000128069_G05_033.labelled.fcs             
+MLN_L000128604_H04_034.labelled.fcs              MLN_L000129504_D04_025.labelled.fcs             
+MLN_L000130278_A05_020.labelled.fcs              MLN_L000131391_D04_021.labelled.fcs             
+MLN_L000131910_D05_030.labelled.fcs              MLN_L000132416_E04_027.labelled.fcs             
+MLN_L000133871_G04_028.labelled.fcs              MLN_L000135050_D04_023.labelled.fcs             
+MLN_L000135054_C03_020.labelled.fcs              MLN_L000135063_B04_018.labelled.fcs             
+MLN_L000135065_C04_020.labelled.fcs              MLN_L000135405_A03_012.labelled.fcs             
+MLN_L000135406_D04_019.labelled.fcs              MLN_L000135488_A03_016.labelled.fcs             
+MLN_L000137231_A03_010.labelled.fcs
+
+Of the 55 files which failed the gating, only two files were flagged by TvsF:
+MLN_L000128066_H05_035.labelled.fcs
+MLN_L000128069_G05_033.labelled.fcs
+
+Both the files have the same Assay Date: 18-May-16 and both are Female.
+Both these files were advised by Adam to "Keep" them for further analysis.
+There are a few more files with the same Assay Date which were flagged by TvsF but which didnot fail the Gating. 
+MLN_L000128055_B05_022.labelled.fcs
+MLN_L000128062_A05_019.labelled.fcs
+MLN_L000128064_A06_020.labelled.fcs
+MLN_L000128070_B06_023.labelled.fcs
+
+Among the 55 files which failed the gating, a batch effect was observed on the following Assay Dates:
+04-Nov-15
+30-Nov-15
+15-Feb-2016 (10 files failed)
+24-Feb-2016
+05-May-2016
+18-May-2016
+18-Jul-2016
+25-Jul-2016
+For some of the dates above, there were 2 files of the same date that failed; therefore, I am not sure if there is an actual batch affect in those files.
+
+Flagging files among the remaining 2596 files based on their Gating Plots:
+"MLN_L000100091_D04_026.labelled.fcs"
+"MLN_L000097258_001.labelled.fcs" 
+"MLN_L000093645_G04_031.labelled.fcs" 
+"MLN 8,2f,24,2f,15_L000096529_008.labelled.fcs" 
+"MLN_L000062713_H03_028.labelled.fcs" 
+"MLN_L000088738_010.labelled.fcs" 
+"MLN_L000093635_A04_018.labelled.fcs" 
+"MLN_L000100081_G04_032.labelled.fcs" 
+"MLN_L000106669_E05_028.labelled.fcs"
+"MLN_L000108027_A03_012.labelled.fcs" 
+"MLN_L000108028_B03_014.labelled.fcs" 
+"MLN_L000108030_E03_019.labelled.fcs"
+"MLN_L000108031_F03_020.labelled.fcs" 
+"MLN_L000129507_A04_018.labelled.fcs"
+"MLN_L000056421_D04_020.labelled.fcs" 
+"MLN_L000062712_G03_027.labelled.fcs" 
+"MLN_L000062718_E04_024.labelled.fcs"
+"MLN_L000044328_D04_022.labelled.fcs" 
+"MLN_L000072459_C03_020.labelled.fcs" 
+"MLN_L000116065_A04_017.labelled.fcs" 
+
+I re-ran the Gating after fixing some Gating Threshold outliers and 13 files failed the gating: 
+MLN_L000090932_031.labelled.fcs
+MLN_L000093635_A04_018.labelled.fcs (Flagged in 1st run)
+MLN_L000093645_G04_031.labelled.fcs (Flagged in 1st run)
+MLN_L000100081_G04_032.labelled.fcs (Flagged in 1st run)
+MLN_L000100085_D05_027.labelled.fcs (This file was flagged as problematic when I was analyzing the August 2015 and March 2016 datasets only. It had too few cells.
+MLN_L000100088_B05_022.labelled.fcs
+MLN_L000100091_D04_026.labelled.fcs (Flagged in 1st run)
+MLN_L000108027_A03_012.labelled.fcs (Flagged in 1st run)
+MLN_L000108028_B03_014.labelled.fcs (Flagged in 1st run) 
+MLN_L000108030_E03_019.labelled.fcs (Flagged in 1st run) 
+MLN_L000108031_F03_020.labelled.fcs (Flagged in 1st run) 
+MLN_L000129507_A04_018.labelled.fcs (Flagged in 1st run) 
+MLN_L000135411_C04_017.labelled.fcs
+
+From the above list the two files, MLN_L000090932_031.labelled.fcs and MLN_L000100088_B05_022.labelled.fcs failed because of the "Live/Dead" channel threshold. For these 2 files, this particular channel was identified as a gating threshold outlier, since it was grabbing the wrong proportion of the "Live" Population. After it was fixed, it had very low number of "Live" population for both. Even though the gating threshold was fixed but subsequently due to low proportion of cells in the "Live" population, further gating along the line eventually failed.
+As for the last file, MLN_L000135411_C04_017.labelled.fcs, I am not quite sure why it failed.
+ 
+In addition, if you look into the spreadsheet, "failedGatingUpdated.TcellMLN.Comments.csv", you will notice a batch affect going on the following Assay Dates:
+03-Aug-15
+30-Sep-15
+07-Dec-15
+ 
+
+The 5 files, which I mentioned earlier had serious/some Time issues according to TvsF but which Adam  wanted me to keep for further analysis - of these 5 files 4 looked good when their gating plots were analyzed; however the 5th file, MLN_L000097258_001.labelled.fcs, looked odd. The 5 files are:
+MLN_L000044334_D03_021.labelled.fcs
+MLN_L000048568_G03_025.labelled.fcs
+MLN_L000055005_E04_031.labelled.fcs
+MLN_L000097255_005.labelled.fcs
+MLN_L000097258_001.labelled.fcs
+
+The 8 files, which I mentioned earlier and which Adam asked me to disregard based on the TvsF output but I decided to keep them and then later decide to keep/discard them based on the Gating plots looked like they have the same kind of plots - like a batch effect. Also, they have the same Assay Date, 29-Jun-15. The files are:
+MLN_L000089594_003.labelled.fcs
+MLN_L000089596_005.labelled.fcs
+MLN_L000089597_006.labelled.fcs
+MLN_L000089598_007.labelled.fcs
+MLN_L000089600_009.labelled.fcs
+MLN_L000089601_010.labelled.fcs
+MLN_L000089602_011.labelled.fcs
+MLN_L000089605_014.labelled.fcs
+
+
+
+#################################################################################################################################
+#################################################################################################################################
+
+Re-Analysis the complete 3i T-cell Panel (MLN) dataset together (August 2015, March 2016, October 2016, and July 2017).
+
+********************
+
+[1] "There are in total 2767 files for analysis."
+[1] "Number of FCS files with NO Barcodes: 18"
+[1] "Number of FCS files which were sent to us but whose information was missing in the metadata spreadsheet: 466"
+[1] "Number of Barcodes which were there in the metadata spreadsheet but for which we received no FCS files: 1056"
+[1] "Number of Corrupted files: 1"
+[1] "Number of files with < 20,000 cells: 5"
+[1] "Number of Duplicate FCS files: 23"
+[1] "All files have the same number of channels: 19"
+
+
+
+TvsF was used for cleaning the files. TvsF flagged 66 FCS files this time (71 files in common with previous analysis and 1 additional from the new datasets sent on July 2017). The new additional flagged file is a WT:
+MLN_L000142433_E02_011.labelled.fcs
+
+Based on Adam's feedback last time on the 71 files and on my observations, I am keeping 59 files and disregarding 12. 
+As for the 1 new flagged file, I have looked into the plot and have decided to keep it in the analysis. 
+
+So in total we are keeping 60 files among the 72, which were flagged by TvsF for further analysis. Therefore we are analyzing 2755 files in total.
+
+60 files failed the gating on the first run. 
+
+Flagging the following files:
+MLN_L000100085_D05_027.labelled.fcs
+MLN_L000093645_G04_031.labelled.fcs 
+MLN_L000093635_A04_018.labelled.fcs
+MLN_L000056421_D04_020.labelled.fcs
+MLN_L000062712_G03_027.labelled.fcs
+MLN_L000062718_E04_024.labelled.fcs
+
+5 files failed the gating on the second run after the gating threshold outliers have been fixed, of which 2 are WTs. They are as follows:
+
+MLN_L000093635_A04_018.labelled.fcs
+MLN_L000093645_G04_031.labelled.fcs
+MLN_L000100085_D05_027.labelled.fcs
+MLN_L000108027_A03_012.labelled.fcs (WT)
+MLN_L000108028_B03_014.labelled.fcs (WT)
+
+All the above 5 files have either been flagged based on their gating plots or have failed during the first analysis phase. 
+
+So the Event counts and Proportions spreadsheet will have results for 2690 FCS files.
+
+
+
+
