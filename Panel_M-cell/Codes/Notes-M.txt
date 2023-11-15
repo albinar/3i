@@ -1,0 +1,12 @@
+Notes on M cells:
+There were 1471 Myeloid SPLN FCS files from August 27, 2015. 
+There were 767 Myeloid SPLN FCS files from March 08, 2016. There were two files which had no barcodes. Remaining number of files from this batch is: 765.
+
+In total there were 2236 files.
+There were 373 Genotypes (WTs + KOs)
+
+From the August dataset, there were 119 files, whose barcodes were not listed; hence, they were removed. So we were now left with 1352 FCS files from the August Dataset.
+
+From the March dataset, there were 89 files, whose barcodes were not listed; hence, they were removed. So we were left with 676 FCS files from the March Dataset.
+
+In total now we have 2028 FCS files for the analysis. There were no corrupted files.
